@@ -2,11 +2,8 @@ package jdbc;
 
 import java.sql.*;
 
-class databaseOperations {
+public class mulesoft {
 	
-	public void printLine() {
-		System.out.println("----------------------------------------------------------------------------------------------\n");		
-	}
 	
 	public void createDatabase(String dbName) {
 		String url = "jdbc:sqlite:" + dbName + ".db";
@@ -74,9 +71,6 @@ class databaseOperations {
 			System.out.println(e.getMessage());
 		}
 	}
-}
-
-public class mulesoft {
 	public static void main(String[] args) {
 		try {
 			Class.forName("org.sqlite.JDBC");
