@@ -5,7 +5,7 @@ import java.sql.*;
 public class mulesoft {
 	
 	
-	public void createDatabase(String dbName) {
+	public static void createDatabase(String dbName) {
 		String url = "jdbc:sqlite:" + dbName + ".db";
 		try {
 			Connection conn = DriverManager.getConnection(url);
@@ -19,7 +19,7 @@ public class mulesoft {
         }
 	}
 	
-	public void createTable(String dbName, String tableName) {
+	public static void createTable(String dbName, String tableName) {
 		try {
 			Connection con = DriverManager.getConnection("jdbc:sqlite:mulesoft.db");
 			Statement statement = con.createStatement();
@@ -34,7 +34,7 @@ public class mulesoft {
 		}
 	}
 	
-	public void insertData(String aname, String amovie) {
+	public static void insertData(String aname, String amovie) {
 		try {
 			Connection con = DriverManager.getConnection("jdbc:sqlite:mulesoft.db");
 			Statement statement = con.createStatement();
@@ -51,7 +51,7 @@ public class mulesoft {
 		}
 	}
 	
-	public void retrieveData(String aname) {
+	public static void retrieveData(String aname) {
 		try {
 			Connection con = DriverManager.getConnection("jdbc:sqlite:mulesoft.db");
 			Statement statement = con.createStatement();
@@ -77,39 +77,36 @@ public class mulesoft {
 			// Database Connection Section
 			Connection con = DriverManager.getConnection("jdbc:sqlite:mulesoft.db");
             System.out.println("SQLite Database Connected successfully");
-            databaseOperations dbo = new databaseOperations();
-            dbo.printLine();
+
             
             // Database Creation Section
-            dbo.createDatabase("Tharani");
-            dbo.printLine();
+            createDatabase("Tharani");
             
             
             // Table Creation Section
-            dbo.createTable("Tharani", "movies");
-            dbo.printLine();
+            createTable("Tharani", "movies");
+       
             
             
             // Data Insertion Section
-            dbo.insertData("mahesh babu", "dookudu");
-            dbo.insertData("prabhas", "bahubali");
-            dbo.insertData("pawan kalyan", "panjaa");
-            dbo.insertData("ram charan", "rangasthalam");
-            dbo.insertData("mahesh babu", "sarileru neekevvaru");
-            dbo.insertData("junior ntr", "temper");
-            dbo.insertData("prabhas", "saaho");
-            dbo.insertData("nithin", "maestro");
+            insertData("mahesh babu", "dookudu");
+            insertData("prabhas", "bahubali");
+            insertData("pawan kalyan", "panjaa");
+            insertData("ram charan", "rangasthalam");
+            insertData("mahesh babu", "sarileru neekevvaru");
+            insertData("junior ntr", "temper");
+            insertData("prabhas", "saaho");
+            insertData("nithin", "maestro");
             System.out.println("Data Inserted Into The Table.");
-            dbo.printLine();
+
             
             
             // Data Querying Section
             System.out.println("Querying Details:");
-            dbo.retrieveData(null);
-            dbo.printLine();
+            retrieveData(null);
             System.out.println("Querying Details With A Particular Actor Name:");
-            dbo.retrieveData("mahesh babu");
-            dbo.printLine();
+            retrieveData("mahesh babu");
+ 
             
             con.close();
 		}
